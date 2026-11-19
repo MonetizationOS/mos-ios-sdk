@@ -1,0 +1,30 @@
+{
+  "status": "success",
+  "eventId": "{{eventId}}",
+  "identity": {},
+  "customer": {
+    "isCustomer": false,
+    "hasProducts": false,
+    "customerIdentifiers": []
+  },
+  "features": {
+    "offline": {
+      "featureId": "feat_offline",
+      "featureSlug": "offline",
+      "properties": {
+        "views": {
+          "type": "meterable",
+          "counterId": "offline-views",
+          "totalUnits": 50,
+          "uniqueResources": true,
+          "periodStart": "2026-10-01T00:00:00Z"
+        }
+      }
+    }
+  },
+  "surfaceBehavior": {
+    "properties": {}
+  },
+  "componentBehaviors": {},
+  "componentsSkipped": false
+}

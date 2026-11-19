@@ -1,0 +1,46 @@
+[
+  {
+    "id": "offer-monthly",
+    "redemptionSchema": "custom:app-store.storekit-product",
+    "presentation": {
+      "title": "Monthly",
+      "subtitle": "Billed every month",
+      "storeProductId": "com.monetizationos.showcase.monthly",
+      "fallbackPrice": "$4.99"
+    },
+    "fixtureRedemptionValues": { "storeProductId": "com.monetizationos.showcase.monthly" },
+    "fixtureRedemption": "redemptions/custom-storekit.json"
+  },
+  {
+    "id": "offer-annual",
+    "redemptionSchema": "custom:app-store.storekit-product",
+    "presentation": {
+      "title": "Annual",
+      "subtitle": "Billed once a year",
+      "badge": "Best value",
+      "storeProductId": "com.monetizationos.showcase.annual",
+      "fallbackPrice": "$39.99"
+    },
+    "fixtureRedemptionValues": { "storeProductId": "com.monetizationos.showcase.annual" },
+    "fixtureRedemption": "redemptions/custom-storekit.json"
+  },
+  {
+    "id": "offer-navigate",
+    "redemptionSchema": "custom:showcase-redemption",
+    "presentation": { "title": "Open a welcome page", "subtitle": "Redeems to a navigate action" },
+    "fixtureRedemption": "redemptions/navigate.json"
+  },
+  {
+    "id": "offer-free-week",
+    "redemptionSchema": "custom:showcase-redemption",
+    "presentation": { "title": "Claim a free week", "subtitle": "Once per reader; a second claim is declined" },
+    "fixtureRedemption": "redemptions/none.json",
+    "fixtureRepeatRedemption": "redemptions/declined.already-claimed.json"
+  },
+  {
+    "id": "offer-expired",
+    "redemptionSchema": "custom:showcase-redemption",
+    "presentation": { "title": "An expired offer", "subtitle": "Always declined" },
+    "fixtureRedemption": "redemptions/declined.expired.json"
+  }
+]

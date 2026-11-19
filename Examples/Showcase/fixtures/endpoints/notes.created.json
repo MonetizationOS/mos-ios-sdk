@@ -1,0 +1,5 @@
+{
+  "status": 201,
+  "headers": { "Content-Type": "application/json" },
+  "body": { "id": "note-1", "received": "{{requestBody}}" }
+}

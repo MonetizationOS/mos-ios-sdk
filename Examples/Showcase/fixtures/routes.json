@@ -1,0 +1,30 @@
+{
+  "decisions": [
+    { "surface": "showcase", "resource": "article/1", "file": "decisions/gate-content.free.json" },
+    { "surface": "showcase", "resource": "article/2", "file": "decisions/gate-content.premium-locked.json" },
+    { "surface": "showcase-metered", "resource": "item/*", "file": "decisions/metered-access.json" },
+    { "surface": "showcase-metered", "resource": "offline/*", "file": "decisions/offline.json" },
+    {
+      "surface": "showcase",
+      "resource": "feed",
+      "file": "decisions/feature-switch.ads-on.json",
+      "authenticatedFile": "decisions/feature-switch.ads-off.json"
+    },
+    {
+      "surface": "showcase-home",
+      "resource": "home",
+      "file": "decisions/surface-properties.anonymous.json",
+      "authenticatedFile": "decisions/surface-properties.signed-in.json"
+    },
+    { "surface": "showcase", "resource": "paywall/native", "file": "decisions/native-paywall.json" },
+    { "surface": "showcase", "resource": "paywall/web", "file": "decisions/web-paywall.json" },
+    { "surface": "showcase", "resource": "offers/redeem", "file": "decisions/redeem-offer.json" }
+  ],
+  "endpoints": [
+    { "method": "GET", "path": "profile", "file": "endpoints/profile.json" },
+    { "method": "POST", "path": "notes", "file": "endpoints/notes.created.json" }
+  ],
+  "counterUpdate": "counter-updates/accepted.json",
+  "notFound": "errors/not-found.json",
+  "endpointNotFound": "errors/endpoint-not-found.json"
+}

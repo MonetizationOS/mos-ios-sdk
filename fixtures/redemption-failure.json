@@ -1,0 +1,10 @@
+{
+  "status": "failure",
+  "statusCode": 409,
+  "message": "Already redeemed",
+  "eventId": "99999999-9999-4999-8999-999999999999",
+  "action": {
+    "type": "none",
+    "properties": {}
+  }
+}

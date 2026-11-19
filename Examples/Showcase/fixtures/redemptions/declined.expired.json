@@ -1,0 +1,6 @@
+{
+  "status": "failure",
+  "statusCode": 410,
+  "eventId": "{{eventId}}",
+  "message": "This offer has expired."
+}

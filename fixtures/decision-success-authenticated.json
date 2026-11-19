@@ -1,0 +1,45 @@
+{
+  "status": "success",
+  "eventId": "44444444-4444-4444-8444-444444444444",
+  "identity": {
+    "identifier": "user_42",
+    "isAuthenticated": true,
+    "authType": "jwt",
+    "jwtClaims": {
+      "sub": "user_42",
+      "email": "a@b.c"
+    }
+  },
+  "customer": {
+    "isCustomer": true,
+    "hasProducts": true,
+    "customerIdentifiers": [
+      "user_42",
+      "cus_123"
+    ]
+  },
+  "features": {
+    "article": {
+      "featureId": "feat_article",
+      "featureSlug": "article",
+      "properties": {
+        "enabled": {
+          "type": "meterable",
+          "isFallback": false,
+          "counterId": "default:feat_article.enabled",
+          "hasAccess": true,
+          "uniqueResources": false,
+          "consumedInRequest": true,
+          "consumedUnitsInRequest": 2
+        }
+      }
+    }
+  },
+  "surfaceBehavior": {
+    "properties": {
+      "entitled": true
+    }
+  },
+  "componentsSkipped": false,
+  "componentBehaviors": {}
+}

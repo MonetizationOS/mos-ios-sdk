@@ -1,0 +1,15 @@
+{
+    "name": "mos-ios-sdk",
+    "version": "0.9.0",
+    "private": true,
+    "description": "Changesets for the MonetizationOS iOS SDK. The SDK itself is the Swift package; this only versions it.",
+    "packageManager": "pnpm@10.32.1",
+    "scripts": {
+        "changeset": "changeset",
+        "version": "changeset version && scripts/sync-version.sh"
+    },
+    "devDependencies": {
+        "@changesets/changelog-github": "^0.7.0",
+        "@changesets/cli": "^2.31.0"
+    }
+}

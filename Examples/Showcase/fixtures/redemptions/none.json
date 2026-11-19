@@ -1,0 +1,5 @@
+{
+  "status": "success",
+  "eventId": "{{eventId}}",
+  "action": { "type": "none", "properties": { "message": "A free week has been added to your account." } }
+}

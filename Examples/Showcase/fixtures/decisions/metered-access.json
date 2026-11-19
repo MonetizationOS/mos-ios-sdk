@@ -1,0 +1,30 @@
+{
+  "status": "success",
+  "eventId": "{{eventId}}",
+  "identity": {},
+  "customer": {
+    "isCustomer": false,
+    "hasProducts": false,
+    "customerIdentifiers": []
+  },
+  "features": {
+    "items": {
+      "featureId": "feat_items",
+      "featureSlug": "items",
+      "properties": {
+        "views": {
+          "type": "meterable",
+          "counterId": "items-views",
+          "totalUnits": 3,
+          "uniqueResources": true,
+          "periodStart": "2026-10-01T00:00:00Z"
+        }
+      }
+    }
+  },
+  "surfaceBehavior": {
+    "properties": {}
+  },
+  "componentBehaviors": {},
+  "componentsSkipped": false
+}

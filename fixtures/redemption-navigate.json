@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "statusCode": 200,
+  "eventId": "66666666-6666-4666-8666-666666666666",
+  "action": {
+    "type": "navigate",
+    "url": "https://example.com/post-checkout",
+    "properties": {
+      "plan": "monthly"
+    }
+  }
+}

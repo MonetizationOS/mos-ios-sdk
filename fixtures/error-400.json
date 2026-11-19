@@ -1,0 +1,5 @@
+{
+  "status": "error",
+  "statusCode": 400,
+  "message": "resource.meta must be an object with string values"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "success",
+  "eventId": "{{eventId}}",
+  "action": {
+    "type": "custom:storekit",
+    "properties": { "storeProductId": "{{storeProductId}}" }
+  }
+}

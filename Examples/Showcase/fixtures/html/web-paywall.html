@@ -1,0 +1,27 @@
+<style>
+  .sc-paywall { font-family: -apple-system, system-ui, sans-serif; padding: 20px; color: #1c1c1e; }
+  .sc-paywall h2 { margin: 0 0 8px; font-size: 24px; }
+  .sc-paywall p { margin: 0 0 16px; color: #636366; }
+  .sc-plan { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; margin-bottom: 10px;
+    border: 1px solid #d1d1d6; border-radius: 12px; color: inherit; text-decoration: none; }
+  .sc-plan-title { font-weight: 600; }
+  .sc-close { display: block; text-align: center; padding: 12px; color: #636366; }
+  @media (prefers-color-scheme: dark) {
+    .sc-paywall { color: #f2f2f7; }
+    .sc-paywall p, .sc-close { color: #aeaeb2; }
+    .sc-plan { border-color: #48484a; }
+  }
+</style>
+<section class="sc-paywall">
+  <h2>Unlock premium articles</h2>
+  <p>A web paywall: server-rendered html with store prices filled in by the app.</p>
+  <a class="sc-plan" href="mos://redeem?token={{token:offer-monthly}}">
+    <span class="sc-plan-title">Monthly</span>
+    <span><span data-mos-product="com.monetizationos.showcase.monthly">$4.99</span> / <span data-mos-product="com.monetizationos.showcase.monthly" data-mos-price="display-period"></span></span>
+  </a>
+  <a class="sc-plan" href="mos://redeem?token={{token:offer-annual}}">
+    <span class="sc-plan-title">Annual</span>
+    <span><span data-mos-product="com.monetizationos.showcase.annual">$39.99</span> / <span data-mos-product="com.monetizationos.showcase.annual" data-mos-price="display-period"></span></span>
+  </a>
+  <a class="sc-close" href="mos://close">Not now</a>
+</section>

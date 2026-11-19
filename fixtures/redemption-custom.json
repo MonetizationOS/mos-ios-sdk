@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "statusCode": 200,
+  "eventId": "77777777-7777-4777-8777-777777777777",
+  "action": {
+    "type": "custom:purchase",
+    "properties": {
+      "productId": "com.example.monthly",
+      "promoSignature": "abc"
+    }
+  }
+}

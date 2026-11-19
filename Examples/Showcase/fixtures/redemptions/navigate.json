@@ -1,0 +1,9 @@
+{
+  "status": "success",
+  "eventId": "{{eventId}}",
+  "action": {
+    "type": "navigate",
+    "url": "https://example.com/welcome",
+    "properties": {}
+  }
+}

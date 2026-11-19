@@ -1,0 +1,55 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  # The Release workflow dispatches this on the release PR's branch, since a PR it opens starts no workflows.
+  workflow_dispatch:
+jobs:
+  versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/check-version.sh
+  # The fixtures and web paywall files are copies of the Android SDK's; skipped with a warning while it is private and no SHARED_REPO_TOKEN is set.
+  shared:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/check-shared.sh
+        env:
+          SHARED_REPO_TOKEN: ${{ secrets.SHARED_REPO_TOKEN }}
+  # Xcode 26, the oldest toolchain apps still ship with; the jobs below use Xcode 27.
+  swift:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift --version
+      - run: swift build
+      - run: swift test
+  ios:
+    runs-on: xcode-27
+    steps:
+      - uses: actions/checkout@v4
+      - run: xcodebuild -version
+      # Serial: in parallel the runner's simulator starves the wall-clock timeout tests.
+      - run: scripts/ios-test.sh -parallel-testing-enabled NO
+  showcase-ios:
+    runs-on: xcode-27
+    defaults:
+      run:
+        working-directory: Examples/Showcase/ios
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen
+      - run: xcodegen generate
+      - run: xcodebuild build -project Showcase.xcodeproj -scheme Showcase -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO -quiet
+  # Public API against the latest v* tag (scripts/check-api.sh). Pull requests only; skipped until the first tag.
+  api:
+    if: github.event_name == 'pull_request'
+    runs-on: xcode-27
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: scripts/check-api.sh "$GITHUB_BASE_REF"

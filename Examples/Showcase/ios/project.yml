@@ -1,0 +1,98 @@
+name: Showcase
+options:
+  bundleIdPrefix: com.monetizationos
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+
+packages:
+  MonetizationOS:
+    path: ../../..
+
+configFiles:
+  Debug: Config.xcconfig
+  Release: Config.xcconfig
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGN_IDENTITY: "-"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+
+targets:
+  Showcase:
+    type: application
+    platform: iOS
+    sources:
+      - path: Showcase
+      # The same fixture responses as the Android SDK's Showcase app.
+      - path: ../fixtures
+        type: folder
+        buildPhase: resources
+    dependencies:
+      - package: MonetizationOS
+        product: MonetizationOS
+      - package: MonetizationOS
+        product: MonetizationOSUI
+    info:
+      path: Showcase/Info.plist
+      properties:
+        CFBundleDisplayName: MOS Showcase
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        # Prefills for the Settings screen, from Config.local.xcconfig when present.
+        MOS_PUBLIC_KEY: $(MOS_PUBLIC_KEY)
+        MOS_API_BASE_URL: $(MOS_API_BASE_URL)
+        MOS_ENDPOINT_NAMESPACE: $(MOS_ENDPOINT_NAMESPACE)
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.monetizationos.showcase
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: ""
+
+  ShowcaseUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: ShowcaseUITests
+    dependencies:
+      - target: Showcase
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.monetizationos.showcase.uitests
+        TEST_TARGET_NAME: Showcase
+        GENERATE_INFOPLIST_FILE: YES
+        # XCUITest APIs are main-actor isolated; Swift 5 mode keeps the test code plain.
+        SWIFT_VERSION: "5.0"
+
+schemes:
+  Showcase:
+    build:
+      targets:
+        Showcase: all
+        ShowcaseUITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: false
+      targets:
+        - ShowcaseUITests
+    profile:
+      config: Release
+    archive:
+      config: Release

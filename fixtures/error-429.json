@@ -1,0 +1,5 @@
+{
+  "status": "error",
+  "statusCode": 429,
+  "message": "rate_limited"
+}

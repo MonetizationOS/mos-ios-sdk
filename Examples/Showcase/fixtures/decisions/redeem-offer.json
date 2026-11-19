@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "eventId": "{{eventId}}",
+  "identity": {},
+  "customer": {
+    "isCustomer": false,
+    "hasProducts": false,
+    "customerIdentifiers": []
+  },
+  "features": {},
+  "surfaceBehavior": {
+    "properties": {
+      "offers": {
+        "title": "One offer per redemption outcome",
+        "mos-offer-slots": [
+          "offer-monthly",
+          "offer-navigate",
+          "offer-free-week",
+          "offer-expired"
+        ]
+      }
+    }
+  },
+  "componentBehaviors": {},
+  "componentsSkipped": false
+}

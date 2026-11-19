@@ -1,0 +1,8 @@
+.DS_Store
+# Swift
+/.build/
+/.swiftpm/
+/Package.resolved
+*.xcodeproj
+*.xcworkspace
+node_modules/

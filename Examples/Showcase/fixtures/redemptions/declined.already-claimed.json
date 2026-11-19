@@ -1,0 +1,6 @@
+{
+  "status": "failure",
+  "statusCode": 409,
+  "eventId": "{{eventId}}",
+  "message": "You have already claimed this offer."
+}

@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "eventId": "{{eventId}}",
+  "identity": {},
+  "customer": {
+    "isCustomer": false,
+    "hasProducts": false,
+    "customerIdentifiers": []
+  },
+  "features": {
+    "article": {
+      "featureId": "feat_article",
+      "featureSlug": "article",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "isFallback": false,
+          "value": false
+        }
+      }
+    }
+  },
+  "surfaceBehavior": {
+    "properties": {}
+  },
+  "componentBehaviors": {},
+  "componentsSkipped": false
+}

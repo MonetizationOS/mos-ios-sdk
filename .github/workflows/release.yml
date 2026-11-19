@@ -1,0 +1,75 @@
+# On main, opens or updates the "chore: release mos-ios-sdk" PR from the pending changesets and dispatches CI on its
+# branch, since a PR opened with GITHUB_TOKEN starts no workflows. When package.json's version has no tag and an
+# earlier v* tag exists (scripts/release-version.sh), it runs the tests and makes the tag (v0.9.1) and a GitHub release
+# from the CHANGELOG section, whether or not changesets are pending. Merging the release PR is what normally bumps the
+# version. Swift Package Manager installs straight from the tag. The first release, with no v* tag yet, is by hand: run
+# the workflow on main. It needs no secrets.
+name: Release
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+concurrency:
+  group: release
+  cancel-in-progress: false
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  changesets:
+    # workflow_dispatch can name any branch; only main releases.
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.release.outputs.version }}
+      pr: ${{ steps.changesets.outputs.pullRequestNumber }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Before changesets/action, which leaves the release PR's branch checked out.
+      - id: release
+        run: scripts/release-version.sh "$GITHUB_EVENT_NAME" >> "$GITHUB_OUTPUT"
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - id: changesets
+        uses: changesets/action@v1
+        with:
+          version: pnpm run version
+          title: "chore: release mos-ios-sdk"
+          commit: "chore: release mos-ios-sdk"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  # CI on the release PR's branch, once changesets/action has created or updated the PR. A workflow_dispatch made with
+  # GITHUB_TOKEN starts a run, unlike its pushes and PRs. A job of its own, so a failed dispatch never holds back a
+  # release.
+  release-pr-ci:
+    needs: changesets
+    if: needs.changesets.outputs.pr != ''
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - run: gh workflow run ci.yml --repo "$GITHUB_REPOSITORY" --ref changeset-release/main
+        env:
+          GH_TOKEN: ${{ github.token }}
+  release:
+    needs: changesets
+    if: github.ref == 'refs/heads/main' && needs.changesets.outputs.version != ''
+    runs-on: macos-26
+    env:
+      TAG: v${{ needs.changesets.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/check-version.sh "$TAG"
+      - run: swift build
+      - run: swift test
+      - run: |
+          awk -v v="## ${TAG#v}" '$0 == v { f = 1; next } /^## / { f = 0 } f' CHANGELOG.md > notes.md
+          gh release create "$TAG" --target "$GITHUB_SHA" --title "$TAG" --notes-file notes.md
+        env:
+          GH_TOKEN: ${{ github.token }}

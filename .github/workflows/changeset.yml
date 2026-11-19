@@ -1,0 +1,15 @@
+# Fails a pull request that changes Sources/ without a changeset (see .changeset/README.md). The no-changelog label
+# skips it, and so does the release PR.
+name: Changeset
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+jobs:
+  changeset:
+    if: ${{ !contains(github.event.pull_request.labels.*.name, 'no-changelog') && github.head_ref != 'changeset-release/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: scripts/check-changeset.sh "$GITHUB_BASE_REF"

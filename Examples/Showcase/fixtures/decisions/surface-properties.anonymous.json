@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "eventId": "{{eventId}}",
+  "identity": {},
+  "customer": {
+    "isCustomer": false,
+    "hasProducts": false,
+    "customerIdentifiers": []
+  },
+  "features": {},
+  "surfaceBehavior": {
+    "properties": {
+      "banner": {
+        "text": "Sign in to keep your reading list on every device.",
+        "tone": "info",
+        "cta": "Sign in"
+      }
+    }
+  },
+  "componentBehaviors": {},
+  "componentsSkipped": false
+}

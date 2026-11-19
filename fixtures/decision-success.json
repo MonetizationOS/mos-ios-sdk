@@ -1,0 +1,132 @@
+{
+  "status": "success",
+  "eventId": "11111111-1111-4111-8111-111111111111",
+  "identity": {
+    "identifier": "mos-anon-v1-abc",
+    "isAuthenticated": false,
+    "authType": "anonymous",
+    "jwtClaims": {}
+  },
+  "customer": {
+    "isCustomer": false,
+    "hasProducts": false,
+    "customerIdentifiers": []
+  },
+  "features": {
+    "article": {
+      "featureId": "feat_article",
+      "featureSlug": "article",
+      "properties": {
+        "enabled": {
+          "type": "meterable",
+          "isFallback": false,
+          "counterId": "default:feat_article.enabled",
+          "hasAccess": true,
+          "consumedUnits": 1,
+          "remainingUnits": 2,
+          "totalUnits": 3,
+          "periodStart": "2026-10-01T00:00:00Z",
+          "uniqueResources": true,
+          "resourceIdUsed": false,
+          "consumedInRequest": true,
+          "consumedUnitsInRequest": 1,
+          "excessUnitsInRequest": 0
+        },
+        "maxArticles": {
+          "type": "number",
+          "isFallback": false,
+          "value": 3
+        },
+        "tier": {
+          "type": "string",
+          "isFallback": true,
+          "value": "free"
+        },
+        "adsFree": {
+          "type": "boolean",
+          "isFallback": false,
+          "value": null
+        },
+        "future": {
+          "type": "gauge",
+          "isFallback": false,
+          "value": 42
+        }
+      }
+    },
+    "podcast": {
+      "featureId": "feat_podcast",
+      "featureSlug": "podcast",
+      "properties": {
+        "enabled": {
+          "type": "meterable",
+          "isFallback": true,
+          "counterId": "default:feat_podcast.enabled",
+          "hasAccess": false
+        }
+      }
+    }
+  },
+  "surfaceBehavior": {
+    "properties": {
+      "entitled": false,
+      "article": {
+        "type": "paywall",
+        "headline": "Subscribe",
+        "mos-offer-slots": [
+          {
+            "type": "single",
+            "offer": {
+              "id": "offer_future",
+              "presentation": {
+                "productId": "com.example.monthly"
+              },
+              "redemptionSchema": "custom:purchase",
+              "token": "eyJhbGciOiAiRVMyNTYiLCAidHlwIjogIkpXVCJ9.eyJpZCI6Im9mZmVyX2Z1dHVyZSIsInByZXNlbnRhdGlvbiI6eyJwcm9kdWN0SWQiOiJjb20uZXhhbXBsZS5tb250aGx5IiwiaGVhZGxpbmUiOiJHbyBtb250aGx5In0sInJlZGVtcHRpb25TY2hlbWEiOiJjdXN0b206cHVyY2hhc2UiLCJleHBpcmF0aW9uTXNVdGMiOjE4OTM0NTYwMDAwMDAsInJlZGVtcHRpb24iOiJaVzVqY25sd2RHVmsifQ.bm90LWEtcmVhbC1zaWduYXR1cmUtMDEyMzQ1Njc4OWFiY2RlZg"
+            }
+          },
+          {
+            "type": "single",
+            "offer": null
+          }
+        ]
+      },
+      "nested": {
+        "list": [
+          {
+            "token": "not.a.jwt"
+          },
+          {
+            "offer": {
+              "token": "eyJhbGciOiAiRVMyNTYiLCAidHlwIjogIkpXVCJ9.eyJpZCI6Im9mZmVyX25vbmUiLCJwcmVzZW50YXRpb24iOnsicHJvZHVjdElkIjoiY29tLmV4YW1wbGUubW9udGhseSIsImhlYWRsaW5lIjoiR28gbW9udGhseSJ9LCJyZWRlbXB0aW9uU2NoZW1hIjoiY3VzdG9tOnB1cmNoYXNlIiwiZXhwaXJhdGlvbk1zVXRjIjpudWxsLCJyZWRlbXB0aW9uIjoiWlc1amNubHdkR1ZrIn0.bm90LWEtcmVhbC1zaWduYXR1cmUtMDEyMzQ1Njc4OWFiY2RlZg"
+            }
+          }
+        ]
+      }
+    },
+    "extra": "open"
+  },
+  "componentsSkipped": false,
+  "componentBehaviors": {
+    "home": {
+      "metadata": {
+        "cssSelector": null
+      },
+      "properties": {
+        "banner": {
+          "type": "banner",
+          "text": "hi",
+          "offer": {
+            "token": "eyJhbGciOiAiRVMyNTYiLCAidHlwIjogIkpXVCJ9.eyJpZCI6Im9mZmVyX3Bhc3QiLCJwcmVzZW50YXRpb24iOnsicHJvZHVjdElkIjoiY29tLmV4YW1wbGUubW9udGhseSIsImhlYWRsaW5lIjoiR28gbW9udGhseSJ9LCJyZWRlbXB0aW9uU2NoZW1hIjoiY3VzdG9tOnB1cmNoYXNlIiwiZXhwaXJhdGlvbk1zVXRjIjoxNTc3ODM2ODAwMDAwLCJyZWRlbXB0aW9uIjoiWlc1amNubHdkR1ZrIn0.bm90LWEtcmVhbC1zaWduYXR1cmUtMDEyMzQ1Njc4OWFiY2RlZg"
+          }
+        }
+      }
+    },
+    "article": {
+      "metadata": {
+        "cssSelector": null
+      },
+      "properties": {}
+    }
+  }
+}

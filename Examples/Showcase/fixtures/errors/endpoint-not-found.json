@@ -1,0 +1,5 @@
+{
+  "status": 404,
+  "headers": { "Content-Type": "application/json" },
+  "body": { "error": "not_found", "message": "No fixture endpoint for {{path}}" }
+}

@@ -1,0 +1,11 @@
+// Prefills for the Settings screen. Put your own values in Config.local.xcconfig (gitignored).
+// The app starts in fixture mode whatever is set here; switch to Live in Settings.
+// `//` starts a comment in xcconfig, hence the $() in URLs.
+
+// A pk_<env>_<id>_<secret> public key for your org.
+MOS_PUBLIC_KEY =
+MOS_API_BASE_URL = https:/$()/api.monetizationos.com
+// The namespace of the app whose endpoints the App endpoints screen calls.
+MOS_ENDPOINT_NAMESPACE = showcase
+
+#include? "Config.local.xcconfig"

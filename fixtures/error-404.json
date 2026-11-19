@@ -1,0 +1,5 @@
+{
+  "status": "error",
+  "statusCode": 404,
+  "message": "Surface with slug 'nope' not found"
+}

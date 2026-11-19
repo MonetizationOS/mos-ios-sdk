@@ -1,0 +1,42 @@
+{
+  "status": "success",
+  "eventId": "{{eventId}}",
+  "identity": {},
+  "customer": {
+    "isCustomer": false,
+    "hasProducts": false,
+    "customerIdentifiers": []
+  },
+  "features": {
+    "article": {
+      "featureId": "feat_article",
+      "featureSlug": "article",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "isFallback": false,
+          "value": false
+        }
+      }
+    }
+  },
+  "surfaceBehavior": {
+    "properties": {
+      "paywall": {
+        "headline": "Unlock premium articles",
+        "body": "Choose a plan to read every premium article.",
+        "benefits": [
+          "Every premium article",
+          "No ads",
+          "Cancel any time"
+        ],
+        "mos-offer-slots": [
+          "offer-monthly",
+          "offer-annual"
+        ]
+      }
+    }
+  },
+  "componentBehaviors": {},
+  "componentsSkipped": false
+}

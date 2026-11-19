@@ -1,0 +1,74 @@
+[
+  {
+    "case": "href, double-quoted",
+    "markup": "<a href=\"mos://redeem?token=a.b.c\">Subscribe</a>",
+    "tokens": [
+      "a.b.c"
+    ]
+  },
+  {
+    "case": "href, single-quoted: the first token parameter, after &amp;",
+    "markup": "<a href='mos://redeem?plan=monthly&amp;token=d.e.f&amp;token=x.y.z'>Go</a>",
+    "tokens": [
+      "d.e.f"
+    ]
+  },
+  {
+    "case": "href, unquoted: scheme and host in any case, a path and a fragment",
+    "markup": "<a href=MOS://Redeem/offer?token=g.h.i#top>Go</a>",
+    "tokens": [
+      "g.h.i"
+    ]
+  },
+  {
+    "case": "character references, then percent-decoding; + stays +",
+    "markup": "<a href=\"mos://redeem?token&#x3D;j%2Ek%2El\">1</a><a href=\"mos://redeem?token=m+n%2Bo\">2</a>",
+    "tokens": [
+      "j.k.l",
+      "m+n+o"
+    ]
+  },
+  {
+    "case": "data-mos-redeem: double-quoted, single-quoted in upper case with spaces, unquoted",
+    "markup": "<button data-mos-redeem=\"p.q.r\">1</button><button DATA-MOS-REDEEM = 's.t.u'>2</button><div data-mos-redeem=v.w.x>3</div>",
+    "tokens": [
+      "p.q.r",
+      "s.t.u",
+      "v.w.x"
+    ]
+  },
+  {
+    "case": "data-mos-redeem: character references",
+    "markup": "<button data-mos-redeem=\"a&#46;b&#x2e;c\">Go</button>",
+    "tokens": [
+      "a.b.c"
+    ]
+  },
+  {
+    "case": "a URL in a script ends at a quote or a backslash",
+    "markup": "<script>go('mos://redeem?token=' + t); el.innerHTML = \"<a href=\\\"mos://redeem?token=y.z.a\\\">Go</a>\";</script>",
+    "tokens": [
+      "y.z.a"
+    ]
+  },
+  {
+    "case": "a URL in an inline handler, its quotes written as references",
+    "markup": "<button onclick=\"location.href=&quot;mos://redeem?token=b.c.d&quot;\">Go</button>",
+    "tokens": [
+      "b.c.d"
+    ]
+  },
+  {
+    "case": "in document order",
+    "markup": "<button data-mos-redeem=\"e.f.g\">1</button><a href=\"mos://redeem?token=h.i.j\">2</a>",
+    "tokens": [
+      "e.f.g",
+      "h.i.j"
+    ]
+  },
+  {
+    "case": "nothing the web paywall redeems",
+    "markup": "<a href=\"mos://redeemer?token=a.a.a\">1</a><a href=\"mos://close?token=b.b.b\">2</a><a href=\"mos://redeem?tok=c.c.c\">3</a><a href=\"mos://redeem?token=&amp;token=d.d.d\">4</a><a href=\"mos://redeem?token=%zz\">5</a><a href=\"mos://redeem#?token=e.e.e\">6</a><button data-mos-redeem=\"\">7</button><button data-mos-redeemer=\"f.f.f\">8</button><style>[data-mos-redeem]{cursor:pointer}</style><a href=\"https://example.com/?token=g.g.g\">9</a>",
+    "tokens": []
+  }
+]

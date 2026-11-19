@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "eventId": "{{eventId}}",
+  "identity": {},
+  "customer": {
+    "isCustomer": false,
+    "hasProducts": false,
+    "customerIdentifiers": []
+  },
+  "features": {},
+  "surfaceBehavior": {
+    "properties": {
+      "banner": {
+        "text": "Welcome back. There are 2 new articles since your last visit.",
+        "tone": "success"
+      }
+    }
+  },
+  "componentBehaviors": {},
+  "componentsSkipped": false
+}
