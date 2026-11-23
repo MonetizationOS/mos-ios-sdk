@@ -134,7 +134,8 @@ case nil: break
 
 func handle(_ redemption: RedemptionResult) {
     switch redemption {
-    case .redeemed(.navigate(let url, _), _, _): openURL(url)                             // http(s) or your own app's scheme only, see below
+    case .redeemed(.navigate(let url, _), _, _):                                          // the workflow picks the URL: open only the web and your own scheme
+        if ["http", "https", "exampleapp"].contains(url.scheme?.lowercased()) { openURL(url) }
     case .redeemed(.custom(let type, let properties), _, _): purchase(type, properties)   // custom or custom:*, e.g. custom:storekit: your StoreKit flow
     case .redeemed(.noAction, _, _): Task { await refresh() }                             // decide again: the redemption cleared the cache
     case .declined(let message, _, _): show(message)                                      // the workflow refused it
